@@ -18,3 +18,4 @@ use App\Http\Controllers\{
 */
 
 Route::post('/users',[UserController::class,'register']);
+Route::post('/users/login',[UserController::class,'login']);
