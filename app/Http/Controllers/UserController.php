@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\{
     UserRegisterRequest,
-    UserLoginRequest
+    UserLoginRequest,
+    UserUpdateRequest
 };
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\{
     Facades\Hash,
-    Str
+    Str,
+    Facades\Auth,
 };
 use Illuminate\Http\JsonResponse;
 use App\Models\User;
@@ -57,5 +59,40 @@ class UserController extends Controller
         $user -> save();
 
         return new UserResource($user);
+    }
+
+    public function get(Request $request):UserResource
+    {
+        $user = Auth::user();
+        return new UserResource($user);
+    }
+
+    public function update(UserUpdateRequest $request):UserResource
+    {
+        $data = $request-> validated();
+
+        $user = Auth::user();
+        if(isset($data['name'])){
+            $user -> name = $data['name'];
+        }
+
+        if(isset($data['password'])){
+            $user -> password = Hash::make($data['password']);
+        }
+
+        $user -> save();
+
+        return new UserResource($user);
+    }
+
+    public function logout(Request $request):JsonResponse
+    {
+        $user = Auth::user();
+        $user -> token = null;
+        $user -> save();
+
+        return response()->json([
+            'data'=>true
+        ])->setStatusCode(200);
     }
 }
