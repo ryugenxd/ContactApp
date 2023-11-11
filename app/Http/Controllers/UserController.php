@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\{
+    Request,
+    JsonResponse
+};
 use App\Http\Requests\{
     UserRegisterRequest,
     UserLoginRequest,
@@ -15,7 +18,6 @@ use Illuminate\Support\{
     Str,
     Facades\Auth,
 };
-use Illuminate\Http\JsonResponse;
 use App\Models\User;
 
 class UserController extends Controller
