@@ -1,0 +1,31 @@
+
+### SignUp User Api
+POST  http://localhost:8000/api/users
+Content-Type: application/json
+Accept: application/json
+{
+    "username":"<your username>",
+    "password":"<your password>",
+    "name":"<your name>"
+}
+
+### Signin User Api
+POST  http://localhost:8000/api/users/login
+Content-Type: application/json
+Accept: application/json
+{
+    "username":"<username>",
+    "password":"<password>",
+}
+
+### Get Current User Api
+GET http://localhost:8000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+
+### Loout User Api
+DELETE  http://localhost:8000/api/users/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>

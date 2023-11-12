@@ -1,9 +1,9 @@
 {
     "openapi":"3.0.3",
     "info": {
-     "title": "addres Api",
-     "description": "This is my addres API",
-     "version": "1.0.0"
+    "title": "addres Api",
+    "description": "This is my addres API",
+    "version": "1.0.0"
     },
     "servers": [
         {
@@ -89,6 +89,12 @@
             }
             ,"get":{
                 "description": "get list address",
+                "parameters": [
+                    {
+                        "name":"Authorization",
+                        "in":"header"
+                    }
+                ],
                 "responses": {
                     "200":{
                         "description": "List address",
