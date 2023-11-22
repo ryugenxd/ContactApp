@@ -13,6 +13,7 @@ class UserRegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        // ony public request 
         return true;
     }
 

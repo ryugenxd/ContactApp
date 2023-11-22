@@ -1,0 +1,61 @@
+### Create Contact Api
+POST  http://localhost:8000/api/contacts
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+{
+    "fist_name":"<your first name>",
+    "last_name":"<yout last name>",
+    "email":"<your email>",
+    "phone":"<your phone>"
+}
+
+### Get Contact by id  API
+GET http://locahost:8000/api/contacts/{id}
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+
+
+### Update Contact by id API
+PUT  http://locahost:8000/api/contacts/{id}
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+{
+    "fist_name":"<your new first name>",
+    "last_name":"<yout new last name>",
+    "email":"<your new email>",
+    "phone":"<your new phone>"
+}
+
+### Delete Contact by id API
+DELETE   http://locahost:8000/api/contacts/{id}
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+
+
+### Get Contact API
+GET   http://locahost:8000/api/contacts
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+
+### Search Contact  by name
+GET   http://locahost:8000/api/contacts?name=<your name>
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+
+### Search Contact  select by page 
+GET   http://locahost:8000/api/contacts?page=<your number page>
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+
+### Search Contact  select by size
+GET   http://locahost:8000/api/contacts?size=<your current size>
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>

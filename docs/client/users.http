@@ -24,7 +24,19 @@ Content-Type: application/json
 Accept: application/json
 Authorization: <Token>
 
-### Loout User Api
+### Update Current User Api
+PATCH  http://localhost:8000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: <Token>
+
+{
+    "name":"<new name>"
+}
+
+
+
+### Logout User Api
 DELETE  http://localhost:8000/api/users/logout
 Content-Type: application/json
 Accept: application/json

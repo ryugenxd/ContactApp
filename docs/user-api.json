@@ -81,7 +81,8 @@
                                             "data":{
                                                 "id":1,
                                                 "name":"rio agung purnomo",
-                                                "username":"rio"
+                                                "username":"rio",
+                                                "token":"toke-xtoken"
                                             }
                                         }
                                     }
@@ -100,6 +101,9 @@
                                                 },
                                                 "name":{
                                                     "type": "string"
+                                                },
+                                                "token":{
+                                                        "type":"string"
                                                 }
                                             }
                                         },

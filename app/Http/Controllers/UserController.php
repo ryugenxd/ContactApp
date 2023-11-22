@@ -38,6 +38,7 @@ class UserController extends Controller
 
         $user = new User($data);
         $user -> password = Hash::make($data['password']);
+        $user -> token = Str::uuid()->toString();
         $user -> save();
 
         return (new UserResource($user))->response()->setStatusCode(201);
