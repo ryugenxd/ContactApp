@@ -35,6 +35,7 @@ const EachItems = () => {
         setItems(data);
       })
       .catch(err=>{
+        Notify('Not Connect To Server');
         console.log(err);
       })
     }

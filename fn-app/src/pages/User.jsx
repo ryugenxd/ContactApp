@@ -39,14 +39,14 @@ const User = () => {
       setNewpass('');
       setCpass('');
       if(data.name != user.name || data.password != user.password){
-        return success('Berhasil di ubah');
+        return success('Updated');
       }
     }).catch(err=>{
       console.log(err);
       setNewname('');
       setNewpass('');
       setCpass('');
-      return notify("gagal terhubung ke server");
+      return notify("Not Connect to Server");
     })
   }
 
