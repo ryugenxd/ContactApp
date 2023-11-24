@@ -2,9 +2,12 @@ import {Navigate, RouterProvider, createBrowserRouter} from 'react-router-dom';
 import { ContextProvider } from './contexts/ContextProvider';
 import MainLayout from './components/MainLayout';
 import AuthLayout from './components/AuthLayout';
+import User from './pages/User';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
+import NotFound from './pages/NotFound';
+import CreateContact from './pages/CreateContact';
 
 
 const router = createBrowserRouter([
@@ -19,6 +22,12 @@ const router = createBrowserRouter([
     {
       path:'/dashboard',
       element:<Dashboard/>
+    },{
+      path:'/create',
+      element:<CreateContact/>
+    },{
+      path:'/profile',
+      element:<User/>
     }
   ]
 },{
@@ -37,7 +46,7 @@ const router = createBrowserRouter([
 },{
   path:"*",
   element:(
-    <div>404 - Not Found</div>
+    <NotFound/>
   ),
 }
 ]);

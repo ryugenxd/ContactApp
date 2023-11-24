@@ -4,13 +4,19 @@ import {createContext,useState,useContext} from "react";
 const StateContext = createContext({
     user:null,
     token:null,
+    contacs:[],
+    setContacs:()=>{},
     setUser:()=>{},
     setToken:()=>{},
 });
 
+const tmp_contact = [];
+
+
 export const ContextProvider = ({children})=>{
     const [token,_setToken] = useState(localStorage.getItem('TOKEN') || '');
-    const [user,setUser] = useState(null);
+    const [user,_setUser] = useState(JSON.parse(localStorage.getItem('USER')) || null);
+    const [contacs,setContacs] = useState(tmp_contact);
 
     const setToken = (token)=>{
         if(token){
@@ -21,12 +27,23 @@ export const ContextProvider = ({children})=>{
         _setToken(token);
     }
 
+    const setUser = (user)=>{
+        if(user){
+            localStorage.setItem('USER',JSON.stringify(user));
+        }else{
+            localStorage.removeItem('USER')
+        }
+        _setUser(user);
+    }
+
     return (<StateContext.Provider
     value={{
         token,
         user,
+        contacs,
         setUser,
-        setToken
+        setToken,
+        setContacs
     }}>
         {children}
     </StateContext.Provider>);

@@ -12,7 +12,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        for($i=0;$i<50;$i++){
+            \App\Models\Contact::create([
+                'first_name'=>fake()->name(),
+                'last_name'=>fake()->name(),
+                'email'=>fake()->unique()->safeEmail(),
+                'phone'=>fake()->phoneNumber(),
+                'user_id'=>95,
+            ]);
+        }
+        
+        
+
+        
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
