@@ -38,7 +38,7 @@ class ContactUpdateRequest extends FormRequest
                 "email"
             ],
             "phone"=>[
-                "nullable",
+                "required",
                 "max:20"
             ]
         ];

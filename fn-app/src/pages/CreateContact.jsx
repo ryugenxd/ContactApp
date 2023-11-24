@@ -47,7 +47,7 @@ const CreateContact = () => {
                     <input onChange={(e)=>setLastName(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" placeholder='last name (optional)' value={lastName} autoComplete="nope"/>
                 </div>
                 <div className='p-2 mb-2 w-full'>
-                    <input onChange={(e)=>setEmail(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="email" placeholder='email' value={email} autoComplete="nope"/>
+                    <input onChange={(e)=>setEmail(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="email" placeholder='email (optional)' value={email} autoComplete="nope"/>
                 </div>
                 <div className='p-2 mb-2 w-full'>
                     <input onChange={(e)=>setPhone(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="number" placeholder='phone' value={phone} autoComplete="nope"/>

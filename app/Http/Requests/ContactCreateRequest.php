@@ -27,7 +27,7 @@ class ContactCreateRequest extends FormRequest
             'first_name'=>['required','max:100'],
             'last_name'=>['nullable','max:100'],
             'email'=>['nullable','max:200','email'],
-            'phone'=>['nullable','max:20'],
+            'phone'=>['required','max:20'],
         ];
     }
 

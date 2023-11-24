@@ -41,7 +41,7 @@ const Navbar = () => {
             </div>
             <div className='flex-2 p-3 w-full flex justify-end'>
               <Link to="/profile" className='inline-block p-2 capitalize cursor-pointer'>
-                <span>{user.name}</span>
+                <span className='whitespace-nowrap'>{user.name}</span>
               </Link>
               <button className='p-2 bg-red-500 rounded-md font-bold' onClick={Logout}>Logout</button>
             </div>

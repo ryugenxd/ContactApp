@@ -32,6 +32,7 @@ const DetailContact = () => {
       setPhone(data.phone);
       notifS('Saved');
       setLoading(false);
+      setUpdate(false);
     }).catch(err=>{
       console.log(err);
       notfE('Not Connect to Server')
@@ -41,7 +42,6 @@ const DetailContact = () => {
       setEmail(email);
       setPhone(phone);
     });
-    setUpdate(false);
   }
 
   const getProfile = (id) =>{
@@ -100,7 +100,7 @@ const DetailContact = () => {
                     <input onChange={(e)=>setLastName(e.target.value)}  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" placeholder='last name (optional)'  autoComplete="nope" value={lastName} disabled={update?false:true}/>
                 </div>
                 <div className='p-2 mb-2 w-full'>
-                    <input onChange={(e)=>setEmail(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="email" placeholder='email'  autoComplete="nope" value={email} disabled={update?false:true}/>
+                    <input onChange={(e)=>setEmail(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="email" placeholder='email (optional)'  autoComplete="nope" value={email} disabled={update?false:true}/>
                 </div>
                 <div className='p-2 mb-2 w-full'>
                     <input onChange={(e)=>setPhone(e.target.value)}  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="number" placeholder='phone'  autoComplete="nope" value={phone} disabled={update?false:true}/>
