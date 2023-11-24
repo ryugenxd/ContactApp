@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import CreateContact from './pages/CreateContact';
+import DetailContact from './pages/DetailContact';
 
 
 const router = createBrowserRouter([
@@ -25,9 +26,14 @@ const router = createBrowserRouter([
     },{
       path:'/create',
       element:<CreateContact/>
-    },{
+    },
+    {
       path:'/profile',
       element:<User/>
+    }
+    ,{
+      path:'/contact/:id',
+      element:<DetailContact/>
     }
   ]
 },{

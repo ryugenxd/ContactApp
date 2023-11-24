@@ -1,9 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import AxiosClient from '../client/AxiosClient';
+import { toast } from 'react-toastify';
 
 const CreateContact = () => {
+    const [firstName,setFirstName] = useState('');
+    const [lastName,setLastName] = useState('');
+    const [email,setEmail] = useState('');
+    const [phone,setPhone] = useState('');
+    const notifS =(message)=> toast.success(message);
+    const notifW = (message)=> toast.warning(message);
+
     const createHandler = ()=>{
-        return alert('hello');
+        AxiosClient.post('/contacts',{
+            first_name:firstName,
+            last_name:lastName,
+            email,
+            phone
+        }).then(({data})=>{
+            setFirstName('');
+            setLastName('');
+            setEmail('');
+            setPhone('');
+            notifS("Saved");
+            console.log(data);
+        }).catch(err=>{
+            notifW("Not Connect To Server")
+            console.log(err);
+        });
     }
   return (
     <div className='px-0 py-3'>
@@ -17,16 +41,16 @@ const CreateContact = () => {
         <div className='grid place-items-center place-content-center w-full' style={{height:'70vh'}}>
             <div className='p-3 outline outline-cyan-500 outline-1 rounded-xl'>
                 <div className='p-2 mb-2 w-full'>
-                    <input className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text"  placeholder='first name'/>
+                    <input onChange={(e)=>setFirstName(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text"  placeholder='first name' value={firstName} autoComplete="nope"/>
                 </div>
                 <div className='p-2 mb-2 w-full'>
-                    <input className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" placeholder='last name'/>
+                    <input onChange={(e)=>setLastName(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" placeholder='last name' value={lastName} autoComplete="nope"/>
                 </div>
                 <div className='p-2 mb-2 w-full'>
-                    <input className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="email" placeholder='email'/>
+                    <input onChange={(e)=>setEmail(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="email" placeholder='email' value={email} autoComplete="nope"/>
                 </div>
                 <div className='p-2 mb-2 w-full'>
-                    <input className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="number" placeholder='phone'/>
+                    <input onChange={(e)=>setPhone(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="number" placeholder='phone' value={phone} autoComplete="nope"/>
                 </div>
                 <div className='flex justify-end items-end w-full'>
                     <button onClick={createHandler} className='p-2 bg-green-500 font-extrabold rounded-md'>Save

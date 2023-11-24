@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import ButtonAdd from '../components/ButtonAdd'
 import EachItems from '../components/EachItems'
 
 const Dashboard = () => {
-  useEffect(()=>{
-    console.log('yahooo');
-  },[]);
   return (
     <div>
       <div className='w-full flex justify-end items-end mt-4'>

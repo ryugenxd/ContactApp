@@ -11,7 +11,6 @@ const EachItems = () => {
 
     useEffect(()=>{
       getDataContact();
-      console.log(items??items);
     },[]);
 
     const deleteData = (id) =>{
@@ -25,8 +24,7 @@ const EachItems = () => {
       })
       .catch(err=>{
         console.log(err);
-      })
-      console.log(id);
+      });
     }
 
     const getDataContact = () => {
@@ -42,8 +40,12 @@ const EachItems = () => {
     }
 
   return (
-    <div className='flex flex-col justify-center items-center gap-3 w-full'>
-      {loading&&<span className='font-bold'>Loading ...</span>}
+    <div className='flex flex-col justify-center items-start gap-3 w-full'>
+      {loading&&(
+        <p className='text-center font-bold uppercase w-full'>
+          Loading ...
+        </p>
+      )}
       <ScrollContainer>
       {items.data && items.data.map((item)=>(
             <FrameItem key={item.id} item={item} deleteH={deleteData}/>
