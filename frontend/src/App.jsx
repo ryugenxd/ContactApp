@@ -9,6 +9,8 @@ import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import CreateContact from './pages/CreateContact';
 import DetailContact from './pages/DetailContact';
+import ListAddress from './pages/ListAddress';
+import CreateAddress from './pages/CreateAddress';
 
 
 const router = createBrowserRouter([
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
     ,{
       path:'/contact/:id',
       element:<DetailContact/>
+    },
+    {
+      path:'/address/create/:contactId',
+      element:<CreateAddress/>
+    }
+    ,{
+      path:'/list/:contactId/addresses',
+      element:<ListAddress/>
     }
   ]
 },{

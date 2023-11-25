@@ -7,7 +7,7 @@ const Dashboard = () => {
     <div>
       <div className='w-full flex justify-end items-end mt-4'>
         <div className='p-3'>
-          <ButtonAdd to="/create" className="flex justify-center items-center gap-2 bg-green-500 p-2 outline outline-cyan-500 outline-1 rounded-xl font-bold" />
+          <ButtonAdd to="/create" className="flex justify-center items-center gap-2 bg-green-500 p-2 outline outline-cyan-500 outline-1 rounded-xl font-bold" text="ADD CONTACT" />
         </div>
       </div>
       <div className='p-3 w-full flex justify-center items-center bg-dark-500 rounded-md outline outline-cyan-500 outline-1'>

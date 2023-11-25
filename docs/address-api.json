@@ -209,7 +209,7 @@
                     }
                 ],
                 "requestBody":{
-                    "description": "Update exiting contact address ",
+                    "description": "Update exiting contact address",
                     "content": {
                         "application/json":{
                             "schema":{
