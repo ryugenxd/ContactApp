@@ -1,29 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AxiosClient from '../client/AxiosClient';
 
-const AddAddressContact = ({showAddress,setShowAddress,id}) => {
+const UpdateAddressContact = ({id}) => {
   const [street,setStreet] = useState('');
   const [city,setCity] = useState('');
   const [province,setProvince] = useState('');
   const [country,setCountry] = useState('');
   const [postal_code,setPostalCode] = useState('');
 
-
-
-
-  const getInfoAddresses = (key)=>{
-    AxiosClient.get(`/contacts/${id}/addresses`)
-    .then(({data})=>{
-      setStreetAddress(data[key].street);
-      setCityAddress(data[key].city);
-      setProvinceAddress(data[key].province);
-      setCountryAddress(data[key].country);
-      setPostalCodeAddress(data[key].postal_code);
-    })
-    .catch(err=>{
-      console.log(err);
-    });
-  }
 
   const setNewAddress = ()=>{
     AxiosClient.post(`/contacts/${id}/addresses`,{
@@ -41,12 +25,12 @@ const AddAddressContact = ({showAddress,setShowAddress,id}) => {
 
 
   return (
-    <div className={`absolute top-7 bg-slate-950 outline outline-cyan-500 outline-1 rounded-xl w-full  ${showAddress?'block':'hidden'}`}>
+    <div className={`absolute top-7 bg-slate-950 outline outline-cyan-500 outline-1 rounded-xl w-full `}>
           <div className='w-full p-2 bg-slate-900 flex justify-end items-center'>
             <div className='text-center w-full font-extrabold'>
               Address
             </div>
-            <button className='p-2 text-red-500 font-extrabold' onClick={()=>setShowAddress(false)}>
+            <button className='p-2 text-red-500 font-extrabold'>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -80,4 +64,4 @@ const AddAddressContact = ({showAddress,setShowAddress,id}) => {
   );
 }
 
-export default AddAddressContact
+export default UpdateAddressContact

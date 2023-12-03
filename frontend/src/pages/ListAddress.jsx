@@ -4,32 +4,13 @@ import AxiosClient from '../client/AxiosClient';
 import { useStateContext } from '../contexts/ContextProvider';
 import AddressItem from '../components/AddressItem';
 import ButtonAdd from '../components/ButtonAdd';
-import AddAddressContact from '../components/AddAddressContact';
+import UpdateAddressContact from '../components/UpdateAddressContact';
 
 const ListAddress = () => {
   const {contactId} = useParams();
   const [loading,setLoading] = useState(false);
   const {addresses,setAddresses} = useStateContext();
   const [show,setShow] = useState(false);
-
-  const [street_address,setStreetAddress] = useState('');
-  const [city_address,setCityAddress] = useState('');
-  const [province_address,setProvinceAddress] = useState('');
-  const [country_address,setCountryAddress] = useState('');
-  const [postal_code_address,setPostalCodeAddress] = useState('');
-
-  const showDetail = (index) =>{
-    if(show){
-      console.log(index);
-    }
-    setShow(!show);
-  }
-
-  useEffect(()=>{
-    setLoading(true);
-    getInfoAddresses();
-  },[]);
-
 
   const getInfoAddresses = ()=>{
     AxiosClient.get(`/contacts/${contactId}/addresses`)
@@ -42,6 +23,14 @@ const ListAddress = () => {
     })
 
   }
+
+  useEffect(()=>{
+    setLoading(true);
+    getInfoAddresses();
+  },[]);
+
+
+  
   if(loading){
     return (
       <p className='text-center p-3 font-extrabold uppercase'>Loading ....</p>
@@ -49,7 +38,7 @@ const ListAddress = () => {
   }else{
     return (
       <div className='mb-2 px-0 py-3 relative flex justify-center items-center flex-col w-full'>
-        <AddAddressContact showAddress={show} setShowAddress={setShow} id={contactId}/>
+        <UpdateAddressContact showAddress={show} setShowAddress={setShow} id={contactId}/>
         <div className='px-0 py-3 mb-4 flex justify-start items-center w-full'>
             <Link to={`/contact/${contactId}`} className='p-2 bg-green-500 font-bold rounded-md flex items-center justify-center w-12'> 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline font-extrabold">
@@ -63,7 +52,7 @@ const ListAddress = () => {
           </div>
         </div>
           {addresses&&addresses.map((item,index)=>(
-           <AddressItem  key={item.id} item={item} index={index} showDetail={showDetail}/>
+           <AddressItem  key={item.id} item={item} contactId={contactId} />
           ))} 
       </div>
     )

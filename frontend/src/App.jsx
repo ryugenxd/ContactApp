@@ -11,6 +11,7 @@ import CreateContact from './pages/CreateContact';
 import DetailContact from './pages/DetailContact';
 import ListAddress from './pages/ListAddress';
 import CreateAddress from './pages/CreateAddress';
+import DetailAddress from './pages/DetailAddress';
 
 
 const router = createBrowserRouter([
@@ -38,13 +39,17 @@ const router = createBrowserRouter([
       element:<DetailContact/>
     },
     {
-      path:'/address/create/:contactId',
-      element:<CreateAddress/>
-    }
-    ,{
+      path:'/contact/:contactId/address/:addressId',
+      element:<DetailAddress/>
+    },
+    {
       path:'/list/:contactId/addresses',
       element:<ListAddress/>
-    }
+    },
+    {
+      path:'/address/create/:contactId',
+      element:<CreateAddress/>
+    },
   ]
 },{
   path:'/',
