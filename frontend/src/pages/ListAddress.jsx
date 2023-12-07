@@ -4,13 +4,22 @@ import AxiosClient from '../client/AxiosClient';
 import { useStateContext } from '../contexts/ContextProvider';
 import AddressItem from '../components/AddressItem';
 import ButtonAdd from '../components/ButtonAdd';
-import UpdateAddressContact from '../components/UpdateAddressContact';
 
 const ListAddress = () => {
   const {contactId} = useParams();
   const [loading,setLoading] = useState(false);
   const {addresses,setAddresses} = useStateContext();
-  const [show,setShow] = useState(false);
+
+  const DeleteAddress = (id)=>{
+    setLoading(true);
+    AxiosClient.delete(`/contacts/${contactId}/addresses/${id}`)
+    .then((response)=>{
+      console.log(response);
+    }).catch(err=>{
+      console.log(err);
+    });
+    getInfoAddresses();
+  }
 
   const getInfoAddresses = ()=>{
     AxiosClient.get(`/contacts/${contactId}/addresses`)
@@ -38,7 +47,6 @@ const ListAddress = () => {
   }else{
     return (
       <div className='mb-2 px-0 py-3 relative flex justify-center items-center flex-col w-full'>
-        <UpdateAddressContact showAddress={show} setShowAddress={setShow} id={contactId}/>
         <div className='px-0 py-3 mb-4 flex justify-start items-center w-full'>
             <Link to={`/contact/${contactId}`} className='p-2 bg-green-500 font-bold rounded-md flex items-center justify-center w-12'> 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline font-extrabold">
@@ -48,11 +56,11 @@ const ListAddress = () => {
         </div>
         <div className='w-full flex justify-end items-center'>
           <div className='p-3'>
-            <ButtonAdd to={`/address/create/${contactId}`} className="flex justify-center items-center gap-2 bg-green-500 p-2 outline outline-cyan-500 outline-1 rounded-xl font-bold" text="ADD ADDRESS" />
+            <ButtonAdd to={`/contact/address/create/${contactId}`} className="flex justify-center items-center gap-2 bg-green-500 p-2 outline outline-cyan-500 outline-1 rounded-xl font-bold" text="ADD ADDRESS" />
           </div>
         </div>
           {addresses&&addresses.map((item,index)=>(
-           <AddressItem  key={item.id} item={item} contactId={contactId} />
+           <AddressItem  key={item.id} item={item} contactId={contactId}  deleteHandler={DeleteAddress}/>
           ))} 
       </div>
     )

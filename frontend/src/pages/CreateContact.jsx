@@ -39,7 +39,7 @@ const CreateContact = () => {
             </Link>
         </div>
         <div className='grid place-items-center place-content-center w-full' style={{height:'70vh'}}>
-            <div className='p-3 outline outline-cyan-500 outline-1 rounded-xl'>
+            <div className='p-3 outline outline-slate-500 outline-1 rounded-xl'>
                 <div className='p-2 mb-2 w-full'>
                     <input onChange={(e)=>setFirstName(e.target.value)} className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text"  placeholder='first name' value={firstName} autoComplete="nope"/>
                 </div>

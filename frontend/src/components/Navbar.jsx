@@ -28,7 +28,7 @@ const Navbar = () => {
     
  if(user){
     return (
-        <div className='flex w-full justify-center items-center bg-slate-950 outline outline-cyan-500 outline-1 rounded-xl text-white'>
+        <div className='flex w-full justify-center items-center bg-slate-950 rounded-xl text-white'>
             <div className='flex-4 p-3 w-full rounded-md'>
               <Link to='/'>
               <h3 className='font-title cursor-pointer'>

@@ -27,7 +27,7 @@ const CreateAddress = () => {
   return (
     <div className='px-0 py-3'>
         <div className='px-0 py-3 mb-4'>
-            <Link to={`/list/${contactId}/addresses`} className='p-2 bg-green-500 font-bold rounded-md flex items-center justify-center w-12'> 
+            <Link to={`/contact/${contactId}/addresses`} className='p-2 bg-green-500 font-bold rounded-md flex items-center justify-center w-12'> 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline font-extrabold">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
             </svg>

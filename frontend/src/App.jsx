@@ -39,12 +39,12 @@ const router = createBrowserRouter([
       element:<DetailContact/>
     },
     {
-      path:'/contact/:contactId/address/:addressId',
-      element:<DetailAddress/>
+      path:'/contact/:contactId/addresses',
+      element:<ListAddress/>
     },
     {
-      path:'/contact/list/:contactId/addresses',
-      element:<ListAddress/>
+      path:'/contact/:contactId/address/:addressId',
+      element:<DetailAddress/>
     },
     {
       path:'/contact/address/create/:contactId',
