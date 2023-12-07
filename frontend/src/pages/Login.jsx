@@ -18,12 +18,30 @@ const Login = () => {
      })
      .then((response)=>{
         setLoading(false);
-        const {data} = response;
-        setToken(data.token);
-        setUser(data);
+        if(response.data){
+          setToken(data.token);
+          setUser(data);
+        }
+        const respon = response.response.data.errors.message;
+        if(respon){
+         respon.forEach((value)=>{
+            notify(value);
+          });
+        }
      }).catch(err=>{
         setLoading(false);
-        return notify("akun tidak di temukan");
+        const {errors} = err.response.data;
+        console.log(errors);
+        if(errors.username){
+          errors.username.forEach((value)=>{
+            notify(value);
+          });
+        } 
+        if(errors.password){
+          errors.password.forEach((value)=>{
+            notify(value);
+          });
+        } 
      });
   }
   return (
