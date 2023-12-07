@@ -85,7 +85,7 @@ const DetailContact = () => {
         <div className={`grid place-items-center place-content-center w-full ${update? 'text-white': 'text-gray-400'}`} style={{height:'70vh'}}>
             <div className='p-3 outline outline-cyan-500 outline-1 rounded-xl'>
                 <div className='w-full p-2 mb-2 flex justify-end items-center'>
-                  <Link to={`/list/${id}/addresses`} className='bg-slate-900 p-2 rounded-md'>Show List Address</Link>
+                  <Link to={`/list/${id}/addres`} className='bg-slate-900 p-2 rounded-md'>Show List Address</Link>
                 </div>
                 <div className='flex justify-center items-center p-3'>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 inline-block">
