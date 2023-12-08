@@ -23,7 +23,7 @@ const CreateContact = () => {
             setEmail('');
             setPhone('');
             notifS("Saved");
-            console.log(data);
+            //console.log(data);
         }).catch(err=>{
             notifW("Not Connect To Server")
             console.log(err);

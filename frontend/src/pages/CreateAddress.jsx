@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useParams,Link } from 'react-router-dom';
 import AxiosClient from '../client/AxiosClient';
+import { toast } from 'react-toastify';
 
 const CreateAddress = () => {
   const [ street,setStreet] = useState('');
@@ -8,6 +9,7 @@ const CreateAddress = () => {
   const [province,setProvince] = useState('');
   const [country,setCountry] = useState('');
   const [postal_code,setPostalCode] = useState('');
+  const notifS =(message)=> toast.success(message);
   let {contactId} = useParams();
   const createHandler = ()=>{
     AxiosClient.post(`/contacts/${contactId}/addresses`,{
@@ -18,7 +20,8 @@ const CreateAddress = () => {
       postal_code
     })
     .then(({data})=>{
-      console.log(data);
+      //console.log(data);
+      notifS("Saved");
     })
     .catch((err)=>{
       console.log(err);

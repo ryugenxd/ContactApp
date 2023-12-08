@@ -19,8 +19,8 @@ const Login = () => {
      .then((response)=>{
         setLoading(false);
         if(response.data){
-          setToken(data.token);
-          setUser(data);
+          setToken(response.data.token);
+          setUser(response.data);
         }
         const respon = response.response.data.errors.message;
         if(respon){
@@ -31,7 +31,6 @@ const Login = () => {
      }).catch(err=>{
         setLoading(false);
         const {errors} = err.response.data;
-        console.log(errors);
         if(errors.username){
           errors.username.forEach((value)=>{
             notify(value);

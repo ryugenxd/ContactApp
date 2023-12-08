@@ -1,5 +1,6 @@
 import React, { useEffect ,useState} from 'react'
 import { useParams ,Link} from 'react-router-dom'
+import AxiosClient from '../client/AxiosClient';
 const DetailAddress = () => {
   const [street,setStreet] = useState('');
   const [city,setCity] = useState('');
@@ -9,18 +10,29 @@ const DetailAddress = () => {
   const [update,setUpdate] = useState(false);
   const {contactId} = useParams();
   const {addressId} = useParams();
-  
+   
 
     useEffect(()=>{
-      console.log(addressId);
-    });
+      AxiosClient.get(`contacts/${contactId}/addresses/${addressId}`)
+      .then((response)=>{
+        //console.log(response);
+        setStreet(response.data.street);
+        setCity(response.data.city);
+        setProvince(response.data.province);
+        setCountry(response.data.country);
+        setPostalCode(response.data.postal_code);
+      })
+      .catch((errors)=>{
+        console.log(errors);
+      })
+    },[]);
     return (
       <div className={`bg-slate-950 rounded-xl w-full `}>
             <div className='w-full p-2 bg-slate-900 flex justify-end items-center'>
               <div className='text-center w-full font-extrabold'>
                 Address
               </div>
-              <Link tpo={`/contact/${contactId}/addresses`} className='p-2 text-red-500 font-extrabold'>
+              <Link to={`/contact/${contactId}/addresses`} className='p-2 text-red-500 font-extrabold'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -35,19 +47,19 @@ const DetailAddress = () => {
             </div>
             <div className='p-3'>
               <div className='p-2 mb-2 w-ful flex justify-center items-center'>
-                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text"  onChange={(e)=>setStreet(e.target.value)} placeholder='street (optional)'  autoComplete="nope" value={street} disabled={update?false:true}/>
+                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text"  onChange={(e)=>setStreet(e.target.value)} placeholder='street (optional)'  autoComplete="nope" value={street??''} disabled={update?false:true}/>
               </div>
               <div className='p-2 mb-2 w-ful flex justify-center items-center'>
-                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setCity(e.target.value)} placeholder='city (optional)'  autoComplete="nope" value={city} disabled={update?false:true}/>
+                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setCity(e.target.value)} placeholder='city (optional)'  autoComplete="nope" value={city??''} disabled={update?false:true}/>
               </div>
               <div className='p-2 mb-2 w-ful flex justify-center items-center'>
-                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setProvince(e.target.value)}  placeholder='province (optional)'  autoComplete="nope" value={province} disabled={update?false:true}/>
+                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setProvince(e.target.value)}  placeholder='province (optional)'  autoComplete="nope" value={province??''} disabled={update?false:true}/>
               </div>
               <div className='p-2 mb-2 w-ful flex justify-center items-center'>
-                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setCountry(e.target.value)}  placeholder='country'  autoComplete="nope" value={country} disabled={update?false:true}/>
+                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setCountry(e.target.value)}  placeholder='country'  autoComplete="nope" value={country??''} disabled={update?false:true}/>
               </div>
               <div className='p-2 mb-2 w-ful flex justify-center items-center'>
-                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setPostalCode(e.target.value)}  placeholder='postal code (optional)'  autoComplete="nope" value={postal_code} disabled={update?false:true}/>
+                <input  className='p-3 m-0 bg-slate-900 focus:outline-none rounded-md' type="text" onChange={(e)=>setPostalCode(e.target.value)}  placeholder='postal code (optional)'  autoComplete="nope" value={postal_code??''} disabled={update?false:true}/>
               </div>
               <div  className={`justify-end items-end w-full ${update?'flex':'hidden'}`}>
                 <button   className='p-2 bg-green-500 font-extrabold rounded-md'>Set Address
