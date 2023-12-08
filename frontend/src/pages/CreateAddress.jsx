@@ -20,7 +20,6 @@ const CreateAddress = () => {
       postal_code
     })
     .then(({data})=>{
-      //console.log(data);
       notifS("Saved");
     })
     .catch((err)=>{

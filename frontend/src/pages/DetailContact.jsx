@@ -73,7 +73,7 @@ const DetailContact = () => {
       </div>
     );
     return (
-      <div className='mb-3 px-0 p-3  w-full'>
+      <div className='mb-3 p-3  w-full'>
         <div className='px-0 py-3 mb-4'>
             <Link to='/' className='p-2 bg-green-500 font-bold rounded-md flex items-center justify-center w-12'> 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline font-extrabold">
@@ -82,7 +82,7 @@ const DetailContact = () => {
             </Link>
         </div>
         <div className={`grid place-items-center place-content-center w-full ${update? 'text-white': 'text-gray-400'}`} style={{height:'70vh'}}>
-            <div className='p-3 outline outline-slate-500 outline-1 rounded-xl'>
+            <div className='p-3 rounded-xl'>
                 <div className='w-full p-2 mb-2 flex justify-end items-center'>
                   <Link to={`/contact/${id}/addresses`} className='bg-slate-900 p-2 rounded-md'>Show List Address</Link>
                 </div>

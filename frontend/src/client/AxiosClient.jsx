@@ -6,7 +6,8 @@ const AxiosClient = axios.create({
 
 AxiosClient.interceptors.request.use((config)=>{
     config.headers['Content-Type'] = 'application/json';
-    config.headers['Authorization']= `${localStorage.getItem('TOKEN')}`;
+    config.headers['Authorization'] = `${localStorage.getItem('TOKEN')}`;
+    config.headers['ngrok-skip-browser-warning'] = '123';
     return config;
 });
 
