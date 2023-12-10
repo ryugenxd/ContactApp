@@ -21,7 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('contact_id')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('contact_id')->on('contacts')->references('id');
+            $table->foreign('contact_id')->on('contacts')->references('id')->onUpdate('cascade')
+            ->onDelete('cascade');;
         });
     }
 

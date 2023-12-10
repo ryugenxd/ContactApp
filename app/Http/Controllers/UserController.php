@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\{
-    Request,
-    JsonResponse
-};
-use App\Http\Requests\{
-    UserRegisterRequest,
-    UserLoginRequest,
-    UserUpdateRequest
-};
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Http\Resources\UserResource;
-use Illuminate\Support\{
-    Facades\Hash,
-    Str,
-    Facades\Auth,
-};
+use Illuminate\Http\{Request,JsonResponse};
+use App\Http\Requests\{UserRegisterRequest,UserLoginRequest,UserUpdateRequest};
+use Illuminate\Support\{Facades\Hash,Str,Facades\Auth,};
 use App\Models\User;
 
 class UserController extends Controller
