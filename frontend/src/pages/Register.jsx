@@ -28,8 +28,24 @@ const Register = () => {
         setToken(data.token);
         setUser(data);
       }).catch((error)=>{
+        console.log(error);
+        const {errors} = error.response.data;
+        if(errors.name){
+          errors.name.forEach((value)=>{
+            notify(value);
+          });
+        } 
+        if(errors.username){
+          errors.username.forEach((value)=>{
+            notify(value);
+          });
+        } 
+        if(errors.password){
+          errors.password.forEach((value)=>{
+            notify(value);
+          });
+        } 
         setLoading(false);
-        return notify("tidak tehubung dengan server !");
       });
     }
 
