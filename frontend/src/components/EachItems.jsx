@@ -3,6 +3,7 @@ import FrameItem from './FrameItem';
 import AxiosClient from '../client/AxiosClient';
 import ScrollContainer from './ScrollContainer';
 import { toast } from 'react-toastify';
+import Pagination from './Pagination';
 
 const EachItems = () => {
     const [items,setItems] = useState([]);
@@ -52,6 +53,7 @@ const EachItems = () => {
             <FrameItem key={item.id} item={item} deleteH={deleteData}/>
       ))}
       </ScrollContainer>
+      <Pagination meta={items.meta}/>
     </div>
   )
 }
