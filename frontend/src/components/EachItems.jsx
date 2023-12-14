@@ -4,9 +4,10 @@ import AxiosClient from '../client/AxiosClient';
 import ScrollContainer from './ScrollContainer';
 import { toast } from 'react-toastify';
 import Pagination from './Pagination';
+import { useStateContext } from '../contexts/ContextProvider';
 
 const EachItems = () => {
-    const [items,setItems] = useState([]);
+    const {contacs,setContacs} = useStateContext();
     const [loading,setLoading] = useState(false);
     const Notify = (m)=>toast.error(m);
 
@@ -33,7 +34,7 @@ const EachItems = () => {
       AxiosClient.get('/contacts')
       .then(({data})=>{
         setLoading(false);
-        setItems(data);
+        setContacs(data);
       })
       .catch(err=>{
         Notify('Not Connect To Server');
@@ -49,11 +50,11 @@ const EachItems = () => {
         </p>
       )}
       <ScrollContainer>
-      {items.data && items.data.map((item)=>(
+      {contacs.data && contacs.data.map((item)=>(
             <FrameItem key={item.id} item={item} deleteH={deleteData}/>
       ))}
       </ScrollContainer>
-      <Pagination meta={items.meta}/>
+      <Pagination meta={contacs.meta}/>
     </div>
   )
 }
