@@ -14,6 +14,29 @@
 
 ### RUN PROJECT WITH LINUX OR TERMINAL GITBASH WINDOWS
 
+#### Requirements
+```text
+node --version
+v20.10.0  ^
+
+npm --version
+10.2.3 ^
+
+yarn --version
+1.22.21 ^
+
+composer --version
+Composer version 2.6.5 2023-10-06 10:11:52 ^
+
+php --version
+MIN php 8.2
+PHP 8.3.0 (cli) (built: Nov 25 2023 14:38:38) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.0, Copyright (c) Zend Technologies
+    with Zend OPcache v8.3.0, Copyright (c), by Zend Technologies
+```
+
+
 ```shell
 npm i -g yarn
 git clone https://github.com/ryugenxd/ContactApp;
