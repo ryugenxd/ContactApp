@@ -32,5 +32,7 @@ php artisan serve;
 
 ```shell
 cd frontend;
+yarn;
 yarn dev;
 ```
+- open with browser ```http://localhost:5173/```
