@@ -9,6 +9,4 @@
 
 #### ENDPOINT API
 
-![user](/docs/screenshot/api/user.png)
-![contact](/docs/screenshot/api/contact.png)
-![address](/docs/screenshot/api/address.png)
+![user](/docs/screenshot/api/user.png) ![contact](/docs/screenshot/api/contact.png) ![address](/docs/screenshot/api/address.png)
