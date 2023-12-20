@@ -60,7 +60,7 @@ yarn dev;
 ```
 - open with browser ```http://localhost:5173/```
 
-- frontend architecture
+- frontend structure 
 ```
 .
 ├── index.html

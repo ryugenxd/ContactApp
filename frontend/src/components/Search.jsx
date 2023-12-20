@@ -38,7 +38,7 @@ const Search = () => {
             <p className='p-2 hover:bg-green-500 rounded-sm w-full'>{val.first_name}</p>
           </Link>
         ))}
-        {notFound&&<pgit className='text-center'>Not Found</p>}
+        {notFound&&<p className='text-center'>Not Found</p>}
       </div>
     </div>
   )
