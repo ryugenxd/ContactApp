@@ -40,7 +40,7 @@ Zend Engine v4.3.0, Copyright (c) Zend Technologies
 ```shell
 npm i -g yarn
 git clone https://github.com/ryugenxd/ContactApp;
-cd ContactApp;
+cd ContactApp/backend;
 composer update;
 ```
 - rename the ```.env.example``` file to ```.env```
@@ -59,3 +59,50 @@ yarn;
 yarn dev;
 ```
 - open with browser ```http://localhost:5173/```
+
+- frontend architecture
+```
+.
+├── index.html
+├── package.json
+├── postcss.config.js
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── client
+│   │   └── AxiosClient.jsx
+│   ├── components
+│   │   ├── AddressItem.jsx
+│   │   ├── AuthLayout.jsx
+│   │   ├── ButtonAdd.jsx
+│   │   ├── ButtonPagination.jsx
+│   │   ├── EachItems.jsx
+│   │   ├── FrameItem.jsx
+│   │   ├── MainLayout.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Pagination.jsx
+│   │   ├── ScrollContainer.jsx
+│   │   └── Search.jsx
+│   ├── contexts
+│   │   └── ContextProvider.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   └── pages
+│       ├── CreateAddress.jsx
+│       ├── CreateContact.jsx
+│       ├── Dashboard.jsx
+│       ├── DetailAddress.jsx
+│       ├── DetailContact.jsx
+│       ├── ListAddress.jsx
+│       ├── Login.jsx
+│       ├── NotFound.jsx
+│       ├── Register.jsx
+│       └── User.jsx
+├── tailwind.config.js
+├── vite.config.js
+└── yarn.lock
+```
