@@ -2,21 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\{
-    JsonResponse,
-    Request,
-    Exceptions\HttpResponseException
-};
-use App\Models\{
-    Contact,
-    Address,
-    User
-};
-use App\Http\Requests\{
-AddressCreateRequest,
-AddressUpdateRequest
-};
+use Illuminate\Http\{JsonResponse,Exceptions\HttpResponseException};
+use App\Http\Requests\{AddressCreateRequest,AddressUpdateRequest};
 use App\Http\Resources\AddressResource;
+use App\Models\{Contact,Address,User};
 use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
@@ -72,7 +61,7 @@ class AddressController extends Controller
         $user = Auth::user();
         $contact =  $this ->getContact($user,$idContact);
         $address =  $this -> getAddress($contact,$idAddress);
-        
+
 
         return new AddressResource($address);
     }
@@ -96,7 +85,7 @@ class AddressController extends Controller
         $contact = $this -> getContact(user:$user,idContact:$idContact);
         $address = $this -> getAddress($contact,$idAddress);
         $address -> delete();
-        
+
         return response()->json([
             'data'=>TRUE
         ])->setStatusCode(200);
