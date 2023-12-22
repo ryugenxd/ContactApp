@@ -5,6 +5,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 const ButtonPagination = ({item}) => {
   const {setContacs} = useStateContext();
   const getDataContact = () => {
+    if(!item.url) return false;
     AxiosClient.get(`/${item.url.split('api/')[1]}`)
     .then(({data})=>{
       setContacs(data);

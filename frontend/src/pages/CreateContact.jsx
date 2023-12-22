@@ -23,10 +23,8 @@ const CreateContact = () => {
             setEmail('');
             setPhone('');
             notifS("Saved");
-            //console.log(data);
         }).catch(err=>{
             const {errors} = err.response.data;
-            console.log(errors);
             if(errors.first_name){
               errors.first_name.forEach((value)=>{
                 notifW(value);

@@ -78,12 +78,10 @@
                                     "success":{
                                         "description": "Success register user",
                                         "value":{
-                                            "data":{
-                                                "id":1,
-                                                "name":"rio agung purnomo",
-                                                "username":"rio",
-                                                "token":"toke-xtoken"
-                                            }
+                                            "id":1,
+                                            "name":"rio agung purnomo",
+                                            "username":"rio",
+                                            "token":"toke-xtoken"
                                         }
                                     }
                                 },

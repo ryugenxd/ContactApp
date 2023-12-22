@@ -54,7 +54,7 @@ const EachItems = () => {
             <FrameItem key={item.id} item={item} deleteH={deleteData}/>
       ))}
       </ScrollContainer>
-      <Pagination meta={contacs.meta}/>
+      <Pagination meta={contacs.meta} status={contacs.data}/>
     </div>
   )
 }

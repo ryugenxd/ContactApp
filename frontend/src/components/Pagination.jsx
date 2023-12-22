@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import ButtonPagination from './ButtonPagination';
 
-const Pagination = ({meta}) => {
+const Pagination = ({meta,status}) => {
   const [links,setLinks] = useState(null);
   useEffect(()=>{
     if(meta)setLinks(meta.links);
   },[meta]);
 
   return (
-    <div>
+    status&&<div className={status.length==0?'hidden':null}>
       {links&&links.map((item,index)=>(
         <ButtonPagination key={index} item={item}/>
       ))}
