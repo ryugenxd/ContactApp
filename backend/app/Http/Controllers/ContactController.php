@@ -28,15 +28,13 @@ class ContactController extends Controller
     {
         $user = Auth::user();
         $contact = Contact::where('id',$id)->where('user_id',$user->id)->first();
-        if(!$contact){
-            throw new HttpResponseException(response()->json([
+        if(!$contact) throw new HttpResponseException(response()->json([
                 'errors'=>[
                     'message'=> [
                         "not found"
                     ]
                 ]
             ])->setStatusCode(404));
-        }
 
         return new ContactResource($contact);
     }
@@ -46,15 +44,13 @@ class ContactController extends Controller
         $user = Auth::user();
 
         $contact = Contact::where('id',$id)->where('user_id',$user->id)->first();
-        if(!$contact){
-            throw new HttpResponseException(response()->json([
+        if(!$contact) throw new HttpResponseException(response()->json([
                 'errors'=>[
                     'message'=> [
                         "not found"
                     ]
                 ]
-            ])->setStatusCode(404));
-        }
+        ])->setStatusCode(404));
 
         $data = $request -> validated();
         $contact -> fill($data);
@@ -68,15 +64,13 @@ class ContactController extends Controller
         $user = Auth::user();
 
         $contact = Contact::where('id',$id)->where('user_id',$user->id)->first();
-        if(!$contact){
-            throw new HttpResponseException(response()->json([
+        if(!$contact) throw new HttpResponseException(response()->json([
                 'errors'=>[
                     'message'=> [
                         "not found"
                     ]
                 ]
-            ])->setStatusCode(404));
-        }
+        ])->setStatusCode(404));
 
         $contact -> delete();
 
@@ -96,23 +90,18 @@ class ContactController extends Controller
 
             //search by first name && last name
             $name = $request -> input('name');
-            if($name){
-                $builder -> where(function (Builder $builder) use ($name) {
+            if($name) $builder -> where(function (Builder $builder) use ($name) {
                     $builder -> orWhere('first_name','like','%'.$name.'%');
                     $builder -> orWhere('last_name','like','%'.$name.'%');
-                });
-            }
+            });
+
             // search by email
             $email = $request -> input('email');
-            if($email){
-                $builder -> where('email','like','%'.$email.'%');
-            }
+            if($email) $builder -> where('email','like','%'.$email.'%');
 
             // search by phone
             $phone = $request -> input('phone');
-            if($phone){
-                $builder -> where('phone','like','%'.$phone.'%');
-            }
+            if($phone) $builder -> where('phone','like','%'.$phone.'%');
         });
         $contacts = $contacts -> paginate(perPage:$size,page:$page);
 

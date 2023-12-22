@@ -2,18 +2,9 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Database\Seeders\{UserSeeder,ContactSeeder,AddressSeeder};
+use App\Models\{Contact,Address};
 use Tests\TestCase;
-use App\Models\{
-    Contact,
-    Address
-};
-use Database\Seeders\{
-    UserSeeder,
-    ContactSeeder,
-    AddressSeeder
-};
 
 class AddressTest extends TestCase
 {
@@ -23,7 +14,7 @@ class AddressTest extends TestCase
     public function test_create_success(): void
     {
         $this -> seed([UserSeeder::class,ContactSeeder::class]);
-        $contact = Contact::query()->limit(1)->first(); 
+        $contact = Contact::query()->limit(1)->first();
         $this -> post('/api/contacts/'.$contact->id.'/addresses',[
             'street'=>'test',
             'city'=>'test',
@@ -35,20 +26,18 @@ class AddressTest extends TestCase
         ])
         ->assertStatus(201)
         ->assertJson([
-            'data'=>[
                 'street'=>'test',
                 'city'=>'test',
                 'province'=>'test',
                 'country'=>'test',
                 'postal_code'=>'123123',
-            ]
         ]);
     }
 
     public function test_create_failed():void
     {
         $this -> seed([UserSeeder::class,ContactSeeder::class]);
-        $contact = Contact::query()->limit(1)->first(); 
+        $contact = Contact::query()->limit(1)->first();
         $this -> post('/api/contacts/'.$contact->id.'/addresses',[
             'street'=>'test',
             'city'=>'test',
@@ -72,7 +61,7 @@ class AddressTest extends TestCase
     {
 
         $this -> seed([UserSeeder::class,ContactSeeder::class]);
-        $contact = Contact::query()->limit(1)->first(); 
+        $contact = Contact::query()->limit(1)->first();
         $this -> post('/api/contacts/'.($contact->id+1).'/addresses',[
             'street'=>'test',
             'city'=>'test',
@@ -106,13 +95,11 @@ class AddressTest extends TestCase
         ])
         ->assertStatus(200)
         ->assertJson([
-            "data"=>[
                 "street"=>'test',
                 "city"=>'test',
                 "province"=>'test',
                 "country"=>'test',
                 "postal_code"=>'123123',
-            ]
         ]);
     }
 
@@ -155,17 +142,15 @@ class AddressTest extends TestCase
         ])
         ->assertStatus(200)
         ->assertJson([
-            "data"=>[
-                'street'=>'test2',
-                'city'=>'test2',
-                'province'=>'test2',
-                'country'=>'test2',
-                'postal_code'=>'321321',
-            ]
+          'street'=>'test2',
+          'city'=>'test2',
+          'province'=>'test2',
+          'country'=>'test2',
+          'postal_code'=>'321321',
         ]);
     }
 
-    public function test_update_failed():void 
+    public function test_update_failed():void
     {
         $this -> seed([
             UserSeeder::class,
@@ -190,7 +175,7 @@ class AddressTest extends TestCase
         ]);
     }
 
-    public function test_update_not_found():void 
+    public function test_update_not_found():void
     {
         $this -> seed([
             UserSeeder::class,
@@ -217,7 +202,7 @@ class AddressTest extends TestCase
         ]);
     }
 
-    public function test_delete_success():void 
+    public function test_delete_success():void
     {
         $this -> seed([
             UserSeeder::class,

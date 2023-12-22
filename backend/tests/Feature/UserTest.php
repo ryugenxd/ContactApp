@@ -10,9 +10,7 @@ use App\Models\User;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
+
     public function test_register_success(): void
     {
        $this -> post('/api/users',[
@@ -21,11 +19,9 @@ class UserTest extends TestCase
         'name'=>'ryugen'
        ])->assertStatus(201)
        ->assertJson([
-        'data'=>[
             'username'=>'ryugenxd',
             'name'=>'ryugen'
-        ]
-    ]);
+      ]);
 
     }
 
@@ -76,10 +72,8 @@ class UserTest extends TestCase
             'password'=>'test',
         ])->assertStatus(200)
         ->assertJson([
-            'data'=>[
                 'username'=>'test',
                 'name'=>'test'
-            ]
         ]);
 
         $user =  User::where('username','test')->first();
@@ -130,10 +124,8 @@ class UserTest extends TestCase
         ])
         -> assertStatus(200)
         -> assertJson([
-            'data'=>[
                 'username'=>'test',
                 'name'=>'test'
-            ]
         ]);
     }
 
@@ -175,10 +167,8 @@ class UserTest extends TestCase
         ])
         -> assertStatus(200)
         ->assertJson([
-            'data'=>[
                 'username'=>'test',
                 'name'=>'test'
-            ]
         ]);
         $newUser = User::where('username','test')->first();
         self::assertNotEquals($oldUser->password,$newUser->password);
@@ -196,16 +186,14 @@ class UserTest extends TestCase
         ])
         -> assertStatus(200)
         ->assertJson([
-            'data'=>[
                 'username'=>'test',
                 'name'=>'new'
-            ]
         ]);
         $newUser = User::where('username','test')->first();
         self::assertNotEquals($oldUser->name,$newUser->name);
     }
 
-    
+
 
     public function test_update_failed():void
     {

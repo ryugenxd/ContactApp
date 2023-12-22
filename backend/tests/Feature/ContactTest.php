@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Log;
 
 class ContactTest extends TestCase
 {
-    
+
     public function test_create_success(): void
     {
         $this -> seed([UserSeeder::class]);
@@ -30,19 +30,17 @@ class ContactTest extends TestCase
         ])
         -> assertStatus(201)
         ->assertJson([
-            'data'=>[
                 'first_name'=>'ryugen',
                 'last_name'=>'xd',
                 'email'=>'ryugenxd@gmail.com',
                 'phone'=>'+6281340662711'
-            ]
         ]);
 
     }
 
     public function test_create_failed(): void
     {
-        
+
         $this -> seed([UserSeeder::class]);
         $this -> post('/api/contacts',[
             'first_name' => '',
@@ -65,7 +63,7 @@ class ContactTest extends TestCase
         ]);
     }
 
-    public function test_create_unauthorizad():void 
+    public function test_create_unauthorizad():void
     {
         $this -> seed([UserSeeder::class]);
         $this -> post('/api/contacts',[
@@ -93,12 +91,10 @@ class ContactTest extends TestCase
         ])
         -> assertStatus(200)
         -> assertJson([
-            'data'=>[
-                'first_name'=>'test',
-                'last_name'=> 'test',
-                'email'=> 'test@gmail.com',
-                'phone' => '11111111'
-            ]
+            'first_name'=>'test',
+            'last_name'=> 'test',
+            'email'=> 'test@gmail.com',
+            'phone' => '11111111'
         ]);
     }
 
@@ -118,8 +114,8 @@ class ContactTest extends TestCase
             ]
         ]);
     }
-    
-    public function test_get_other_user_contact():void 
+
+    public function test_get_other_user_contact():void
     {
         $this -> seed([UserSeeder::class,ContactSeeder::class]);
         $contact = Contact::query()->limit(1)->first();
@@ -136,7 +132,7 @@ class ContactTest extends TestCase
         ]);
     }
 
-    public function test_update_success():void 
+    public function test_update_success():void
     {
         $this -> seed([UserSeeder::class,ContactSeeder::class]);
         $contact = Contact::query()->limit(1)->first();
@@ -150,16 +146,14 @@ class ContactTest extends TestCase
         ])
         -> assertStatus(200)
         -> assertJson([
-            'data'=>[
-                'first_name'=>'test2',
-                'last_name'=> 'test2',
-                'email'=> 'test2@gmail.com',
-                'phone' => '22222222'
-            ]
+            'first_name'=>'test2',
+            'last_name'=> 'test2',
+            'email'=> 'test2@gmail.com',
+            'phone' => '22222222'
         ]);
     }
 
-    public function test_update_validation_error():void 
+    public function test_update_validation_error():void
     {
 
         $this -> seed([UserSeeder::class,ContactSeeder::class]);
@@ -241,7 +235,7 @@ class ContactTest extends TestCase
 
     public function test_search_by_email():void
     {
-        
+
         $this -> seed([UserSeeder::class,SearchSeeder::class]);
         $response = $this -> get('/api/contacts?email=test',[
             'Authorization'=>'test'
@@ -255,7 +249,7 @@ class ContactTest extends TestCase
 
     public function test_search_by_phone():void
     {
-        
+
         $this -> seed([UserSeeder::class,SearchSeeder::class]);
         $response = $this -> get('/api/contacts?phone=11111',[
             'Authorization'=>'test'

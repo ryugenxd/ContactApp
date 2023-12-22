@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Exceptions\HttpResponseException;
-use App\Http\Resources\UserResource;
-use Illuminate\Http\{Request,JsonResponse};
 use App\Http\Requests\{UserRegisterRequest,UserLoginRequest,UserUpdateRequest};
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\{Facades\Hash,Str,Facades\Auth,};
+use Illuminate\Http\{Request,JsonResponse};
+use App\Http\Resources\UserResource;
 use App\Models\User;
 
 class UserController extends Controller
@@ -15,15 +15,13 @@ class UserController extends Controller
     {
         $data = $request -> validated();
 
-        if(User::where('username',$data['username'])->count() == 1){
-            throw new HttpResponseException(response([
+        if(User::where('username',$data['username'])->count() == 1) throw new HttpResponseException(response([
                 "errors"=>[
                     "username"=>[
                         "username already to exists"
                     ]
                 ]
-            ],400));
-        }
+        ],400));
 
         $user = new User($data);
         $user -> password = Hash::make($data['password']);
@@ -37,15 +35,13 @@ class UserController extends Controller
     {
         $data = $request -> validated();
         $user = User::where('username',$data['username'])->first();
-        if(!$user || !Hash::check($data['password'], $user->password)){
-            throw new HttpResponseException(response([
-                "errors"=>[
-                    "message"=>[
-                        "username or password wrong"
-                    ]
-                ]
-            ],401));
-        }
+        if(!$user || !Hash::check($data['password'], $user->password)) throw new HttpResponseException(response([
+          "errors"=>[
+              "message"=>[
+                    "username or password wrong"
+              ]
+          ]
+        ],401));
 
         $user -> token = Str::uuid()->toString();
         $user -> save();
@@ -64,14 +60,8 @@ class UserController extends Controller
         $data = $request-> validated();
 
         $user = Auth::user();
-        if(isset($data['name'])){
-            $user -> name = $data['name'];
-        }
-
-        if(isset($data['password'])){
-            $user -> password = Hash::make($data['password']);
-        }
-
+        if(isset($data['name'])) $user -> name = $data['name'];
+        if(isset($data['password'])) $user -> password = Hash::make($data['password']);
         $user -> save();
 
         return new UserResource($user);
