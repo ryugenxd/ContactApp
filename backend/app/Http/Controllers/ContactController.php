@@ -103,7 +103,7 @@ class ContactController extends Controller
             $phone = $request -> input('phone');
             if($phone) $builder -> where('phone','like','%'.$phone.'%');
         });
-        $contacts = $contacts -> paginate(perPage:$size,page:$page);
+        $contacts = $contacts -> latest() -> paginate(perPage:$size,page:$page);
 
         // return collection
         return new ContactCollection($contacts);
