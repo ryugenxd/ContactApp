@@ -48,7 +48,7 @@ composer update;
 
 ```shell
 php artisan key:generate;
-php artisan migrate:fresh;
+php artisan migrate;
 php artisan serve;
 ```
 - open a new terminal window
