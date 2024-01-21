@@ -10,7 +10,7 @@
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.8.0",
         "postcss": "^8.4.32",
-        "vite": "^4.0.0"
+        "vite": "^4.5.2"
     },
     "dependencies": {
         "@vitejs/plugin-react": "^4.2.1",
